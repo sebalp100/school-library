@@ -102,7 +102,7 @@ git clone https://github.com/sebalp100/school-library/
 To run the project, execute the following commands in your Ruby terminal:
 
 - Open your terminal and run `irb` on the root folder of the project
-- Run `require 'person, student or teacher' ` command
+- Run `require_relative 'person, student or teacher' ` command
 - Run `person = Person.new(25, "John")` command to create a new person
 - Run `student = Student.new(15, "Jane", "Class A")` command create a new student
 - Run `teacher = Teacher.new(35, "Mike", "Math")` command to create a new teacher
