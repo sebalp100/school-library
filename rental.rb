@@ -7,10 +7,10 @@ class Rental
   attr_reader :book, :person
 
   def initialize(date, book, person)
-    @date = Date.parse(date.to_s)
+    @date = date
     @book = book
     @person = person
     book.rentals << self
-    person.add_rental(self)
+    person.rentals << self
   end
 end

@@ -12,7 +12,7 @@ class Student < Person
 
   def label=(label)
     @label = label
-    label.students.push(self) unless label.students.include?(self)
+    classroom.students.push(self) unless classroom.students.include?(self)
   end
 
   def play_hooky
