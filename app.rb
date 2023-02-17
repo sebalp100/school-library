@@ -16,19 +16,19 @@ class App
 
   def list_all_books
     puts 'Books:'
-    @books.each do |book|
-      puts book.title
+    @books.each_with_index do |book, index|
+      puts "#{index + 1} Title: #{book.title}, Author: #{book.author}"
     end
   end
 
   def list_all_people
     puts 'People:'
-    @people.each do |person|
+    @people.each_with_index do |person, index|
       case person
       when Student
-        puts "#{person.id}: #{person.name} (Student)"
+        puts "#{index + 1} Name: #{person.name}, Id: #{person.id} (Student)"
       when Teacher
-        puts "#{person.id}: #{person.name} (Teacher)"
+        puts "#{index + 1} Name: #{person.name}, Id: #{person.id} (Teacher)"
       end
     end
   end
@@ -65,7 +65,7 @@ class App
     end
     puts "Rentals for person with id #{id}:"
     rentals.each do |rental|
-      puts "#{rental.person.name} rented #{rental.book.title} on #{rental.date}"
+      puts "#{rental.person.name} rented #{rental.book.title} on #{rental.date}", ''
     end
   end
 end

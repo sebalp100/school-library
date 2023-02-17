@@ -50,21 +50,21 @@ def create_person(app)
   name = gets.chomp
   print "Person's age: "
   age = gets.chomp.to_i
-  print "Person's type (Student/Teacher): "
-  type = gets.chomp
+  print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+  type = gets.chomp.to_i
   case type
-  when 'Student'
+  when 1
     print 'Classroom: '
     classroom = gets.chomp
     print 'Parent permission (true/false): '
     parent_permission = gets.chomp
     app.create_person(Student, age, name, classroom, parent_permission)
-  when 'Teacher'
+    puts 'Person created succesfully', ''
+  when 2
     print 'Specialization: '
     specialization = gets.chomp
     app.create_person(Teacher, age, name, specialization, parent_permission)
-  else
-    puts 'Invalid type'
+    puts 'Person created succesfully', ''
   end
 end
 
@@ -74,24 +74,28 @@ def create_book(app)
   print "Book's author: "
   author = gets.chomp
   app.create_book(title, author)
+  puts 'Book created succesfully', ''
 end
 
 def create_rental(app)
-  print "Person's id: "
-  id = gets.chomp.to_i
-  person = app.people.find { |p| p.id == id }
-  if person.nil?
-    puts "Person not found with id #{id}"
+  puts 'Select a book from the following list by number'
+  app.list_all_books
+  book_num = gets.chomp.to_i
+  book = app.books[book_num - 1]
+  if book.nil?
+    puts 'Invalid book number'
   else
-    print "Book's title: "
-    title = gets.chomp
-    book = app.books.find { |b| b.title == title }
-    if book.nil?
-      puts "Book not found with title #{title}"
+    puts 'Select a person from the following list by number (not id)'
+    app.list_all_people
+    person_id = gets.chomp.to_i
+    person = app.people[person_id - 1]
+    if person.nil?
+      puts "Person not found with number #{person_id}"
     else
-      print 'Rental date: '
-      date = gets.chomp
-      app.create_rental(person, book, date)
+      print 'Enter the rental date (YYYY-MM-DD): '
+      rental_date = gets.chomp
+      app.create_rental(person, book, rental_date)
+      puts "Rental created for '#{book.title}' by #{person.name}", ''
     end
   end
 end
