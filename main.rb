@@ -46,12 +46,12 @@ def create_item(choice, app)
 end
 
 def create_person(app)
-  print "Person's name: "
-  name = gets.chomp
-  print "Person's age: "
-  age = gets.chomp.to_i
   print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
   type = gets.chomp.to_i
+  print "Person's age: "
+  age = gets.chomp.to_i
+  print "Person's name: "
+  name = gets.chomp
   case type
   when 1
     print 'Classroom: '
