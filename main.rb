@@ -54,18 +54,26 @@ def create_person(app)
   name = gets.chomp
   case type
   when 1
-    print 'Classroom: '
-    classroom = gets.chomp
-    print 'Parent permission (true/false): '
-    parent_permission = gets.chomp
-    app.create_person(Student, age, name, classroom, parent_permission)
-    puts 'Person created succesfully', ''
+    create_student
   when 2
-    print 'Specialization: '
-    specialization = gets.chomp
-    app.create_person(Teacher, age, name, specialization, parent_permission)
-    puts 'Person created succesfully', ''
+    create_teacher
   end
+end
+
+def create_student
+  print 'Classroom: '
+  classroom = gets.chomp
+  print 'Parent permission (true/false): '
+  parent_permission = gets.chomp
+  app.create_person(Student, age, name, classroom, parent_permission)
+  puts 'Person created succesfully', ''
+end
+
+def create_teacher
+  print 'Specialization: '
+  specialization = gets.chomp
+  app.create_person(Teacher, age, name, specialization, parent_permission)
+  puts 'Person created succesfully', ''
 end
 
 def create_book(app)
