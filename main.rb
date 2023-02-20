@@ -87,7 +87,6 @@ end
 
 def item_exists?(array, index)
   array[index] unless array[index].nil?
-  nil
 end
 
 def create_rental(app)
