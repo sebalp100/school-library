@@ -85,18 +85,23 @@ def create_book(app)
   puts 'Book created succesfully', ''
 end
 
+def item_exists?(array, index)
+  arry[index] unless array[index].nil?
+  nil
+end
+
 def create_rental(app)
   puts 'Select a book from the following list by number'
   app.list_all_books
   book_num = gets.chomp.to_i
-  book = app.books[book_num - 1]
+  book = item_exists?(app.books, book_num - 1)
   if book.nil?
     puts 'Invalid book number'
   else
     puts 'Select a person from the following list by number (not id)'
     app.list_all_people
     person_id = gets.chomp.to_i
-    person = app.people[person_id - 1]
+    person = item_exists?(app.people, person_id - 1)
     if person.nil?
       puts "Person not found with number #{person_id}"
     else
