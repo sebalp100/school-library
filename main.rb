@@ -54,13 +54,13 @@ def create_person(app)
   name = gets.chomp
   case type
   when 1
-    create_student
+    create_student(app, age, name)
   when 2
-    create_teacher
+    create_teacher(app, age, name)
   end
 end
 
-def create_student
+def create_student(app, age, name)
   print 'Classroom: '
   classroom = gets.chomp
   print 'Parent permission (true/false): '
@@ -69,10 +69,10 @@ def create_student
   puts 'Person created succesfully', ''
 end
 
-def create_teacher
+def create_teacher(app, age, name)
   print 'Specialization: '
   specialization = gets.chomp
-  app.create_person(Teacher, age, name, specialization, parent_permission)
+  app.create_person(Teacher, age, name, specialization, true)
   puts 'Person created succesfully', ''
 end
 
@@ -86,7 +86,7 @@ def create_book(app)
 end
 
 def item_exists?(array, index)
-  arry[index] unless array[index].nil?
+  array[index] unless array[index].nil?
   nil
 end
 
