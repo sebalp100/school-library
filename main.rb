@@ -54,18 +54,26 @@ def create_person(app)
   name = gets.chomp
   case type
   when 1
-    print 'Classroom: '
-    classroom = gets.chomp
-    print 'Parent permission (true/false): '
-    parent_permission = gets.chomp
-    app.create_person(Student, age, name, classroom, parent_permission)
-    puts 'Person created succesfully', ''
+    create_student(app, age, name)
   when 2
-    print 'Specialization: '
-    specialization = gets.chomp
-    app.create_person(Teacher, age, name, specialization, parent_permission)
-    puts 'Person created succesfully', ''
+    create_teacher(app, age, name)
   end
+end
+
+def create_student(app, age, name)
+  print 'Classroom: '
+  classroom = gets.chomp
+  print 'Parent permission (true/false): '
+  parent_permission = gets.chomp
+  app.create_person(Student, age, name, classroom, parent_permission)
+  puts 'Person created succesfully', ''
+end
+
+def create_teacher(app, age, name)
+  print 'Specialization: '
+  specialization = gets.chomp
+  app.create_person(Teacher, age, name, specialization, true)
+  puts 'Person created succesfully', ''
 end
 
 def create_book(app)
@@ -77,18 +85,22 @@ def create_book(app)
   puts 'Book created succesfully', ''
 end
 
+def item_exists?(array, index)
+  array[index] unless array[index].nil?
+end
+
 def create_rental(app)
   puts 'Select a book from the following list by number'
   app.list_all_books
   book_num = gets.chomp.to_i
-  book = app.books[book_num - 1]
+  book = item_exists?(app.books, book_num - 1)
   if book.nil?
     puts 'Invalid book number'
   else
     puts 'Select a person from the following list by number (not id)'
     app.list_all_people
     person_id = gets.chomp.to_i
-    person = app.people[person_id - 1]
+    person = item_exists?(app.people, person_id - 1)
     if person.nil?
       puts "Person not found with number #{person_id}"
     else
