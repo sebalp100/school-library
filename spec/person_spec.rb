@@ -20,6 +20,12 @@ describe Person do
     end
   end
 
+  describe '#correct_name' do
+    it 'returns the name of the person' do
+      expect(person.correct_name).to eq('Alice')
+    end
+  end
+
   describe '#can_use_services?' do
     context 'when person is of age' do
       let(:person) { Person.new(25, 'Bob') }
