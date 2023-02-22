@@ -27,7 +27,7 @@ describe CapitalizeDecorator do
 end
 
 describe TrimmerDecorator do
-  context "when the name is longer than 10 characters" do
+  context 'when the name is longer than 10 characters' do
     before do
       @nameable = double('Nameable', correct_name: 'John William Smith')
       @decorator = TrimmerDecorator.new(@nameable)
@@ -40,7 +40,7 @@ describe TrimmerDecorator do
     end
   end
 
-  context "when the name is shorter than or equal to 10 characters" do
+  context 'when the name is shorter than or equal to 10 characters' do
     before do
       @nameable = double('Nameable', correct_name: 'John Smith')
       @decorator = TrimmerDecorator.new(@nameable)
